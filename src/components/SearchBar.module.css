@@ -5,7 +5,7 @@
     width: 250px;
     opacity: 60%;
     margin-left: 40%;
-    margin-bottom:5%;
+
     margin-top: 2%;
 }
 
@@ -14,7 +14,7 @@
     border-radius: 3px;
     height:35px;
     width:130px;
-    background-color: darkslateblue;
+    background-color: #87A96B;
     color: aliceblue;
     font-weight: bold;
     font-size: 15px;
@@ -24,4 +24,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(150px, auto);
+}
+
+.error{
+    color: Red;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 40%;
 }
