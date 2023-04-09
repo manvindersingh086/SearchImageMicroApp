@@ -7,9 +7,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-    <Header header="Image Search App" />
-    <Searchbar />
-    <Footer footer="Image Search App" />
+      <Header header="Image Search App" />
+      <Searchbar />
+      <Footer />
     </div>
   );
 }

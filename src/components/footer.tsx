@@ -1,4 +1,3 @@
-import React from "react";
 import classes from "../components/footer.module.css";
 
 const footer = (props : any) => {
