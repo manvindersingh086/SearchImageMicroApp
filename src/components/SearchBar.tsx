@@ -7,6 +7,7 @@ const SearchBar = () => {
     //SETTING INITIAL STATE FOR VARIABLES
     const [searchName, setSearchName] = useState("");
     const [error,setError] = useState(false)
+    const [apiKeyError, setApiKeyError] = useState(false)
     const [searchResult, setSearchResult] = useState([] as any)
 
     //FETCHING API KEY
@@ -24,10 +25,18 @@ const SearchBar = () => {
     }
     const formSubmitHandler = async (event : any) => {
         event.preventDefault();
+
+        //VALIDATING API KEY AND SEARCH FIELD
         if(searchName === ""){
             setError(true)
             return
         }
+        else if (API_KEY === undefined)
+        {
+            setApiKeyError(true)
+            return
+        }
+
         
         const response = await unsplash.search.getPhotos({
             query: searchName,
@@ -36,6 +45,13 @@ const SearchBar = () => {
             color: 'green',
             orientation: 'portrait',
           });
+
+          //VALIDATING RESPONSE
+          if(response.status === 401)
+          {
+            setApiKeyError(true)
+            return 
+          }
 
           setError(false)
           setSearchResult(response.response?.results);
@@ -51,7 +67,7 @@ const SearchBar = () => {
                 </form>
 
                 {error && <p className={classes.error}>Please enter a valid name !</p>}
-
+                {apiKeyError && <p className={classes.error}>Please provide a valid API key !</p>}
                 <div className={classes.imgtag}>
                     {searchResult.map((pic : any ) =>
                         <div key={pic.id}>
