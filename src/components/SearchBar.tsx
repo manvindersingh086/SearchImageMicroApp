@@ -24,7 +24,7 @@ const SearchBar = () => {
     }
     const formSubmitHandler = async (event : any) => {
         event.preventDefault();
-        if(searchName == ""){
+        if(searchName === ""){
             setError(true)
             return
         }
